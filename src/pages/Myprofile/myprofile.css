@@ -1,0 +1,25 @@
+.profile {
+    padding: 20px 5%;
+    padding-bottom: 200px;
+}
+.profile .container {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+.profile .container .row {
+    display: block;
+}
+.profile .container button {
+    padding: 5px 10px;
+    margin-top: 30px;
+}
+
+.detaile-page {
+    padding: 20px 5%;
+    padding-bottom: 200px;
+}
+.detaile-page input {
+    height: 30px;
+    width: 200px;
+}

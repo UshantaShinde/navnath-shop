@@ -59,7 +59,7 @@ const Header = () => {
                                 <div class="dropdown-content">
                                     <Link to={"/profile"} >My Profile</Link>
                                     <Link to={"/orders"} >Orders</Link>
-                                    <a href="" onClick={logout}>LogOut</a>
+                                    <a style={{backgroundColor:"gray",color:"white"}} href="" onClick={logout}>LogOut</a>
                                 </div>
                             </div>
 
@@ -68,7 +68,7 @@ const Header = () => {
                         </>
                     }
                     <li></li>
-                    <li><Link to={"/cart"}>
+                    <li><Link to={"/cart"} className="cart">
                         <img src={cartimg} style={{ width: "30px" }} alt="" />
                         {cartc ?
                             <span className='cart-item'>{cartc.cart.length}</span>

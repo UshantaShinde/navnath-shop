@@ -19,14 +19,23 @@ const ViewProducts = () => {
   }, [])
 
   return (
-    <div>ViewProducts
+    <div className='list'>
       {
         products.map((e) => {
           return (<>
-            <h1>{e.name}</h1>
-            <h1>{e.price}</h1>
-            <h1>{e.desc}</h1>
-            <h1>{e.brand}</h1>
+            <div class="container">
+              <div class="row">
+                <img src={e.img} alt="" />
+              </div>
+              <div class="row">
+                <h3>{e.name}</h3>
+                <p>{e.desc}</p>
+                <h5>Rs . {e.price}</h5><br/>
+                <span><button>Update</button>
+                  <button>Delete</button>
+                </span>
+              </div>
+            </div>
           </>)
         })
       }

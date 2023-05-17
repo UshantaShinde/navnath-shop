@@ -22,18 +22,24 @@ const Orders = () => {
     }, [])
 
 
-  return (
-    <div className='orders'>
-        {
-            products.map((e) => {
-                return(<>
-                <h1>{e.product_name}</h1>
-                <h2>{e.status}</h2>
-                </>)
-            })
-        }
-    </div>
-  )
+    return (
+        <div className='orders'>
+            {
+                products.map((e) => {
+                    return (<div className='container'>
+                        <div className="row">
+                            <img src={e.product_img} alt="" />
+                        </div>
+                        <div className="row">
+                            <h1>{e.product_name}</h1>
+                            <h2>{e.status}</h2>
+                            <button>Cancel</button>
+                        </div>
+                    </div>)
+                })
+            }
+        </div>
+    )
 }
 
 export default Orders

@@ -41,6 +41,7 @@ const Brand = () => {
         <>
             <div className="brand-name">
                 <h1>{brand.name}</h1>
+                <img src={brand.img} alt="" />
             </div>
             <div className="items">
                 {

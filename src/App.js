@@ -18,6 +18,7 @@ import ViewProducts from './Admin/ViewProducts';
 import Payment from './pages/Payment/Payment';
 import Myprofile from './pages/Myprofile/Myprofile';
 import Orders from './pages/Orders/Orders';
+import AddDetails from './pages/Myprofile/AddDetails';
 function App() {
 
 
@@ -38,6 +39,7 @@ function App() {
             <Route path="contact" element={<Contact />} />
             <Route path="payment" element={<Payment />} />
             <Route path="profile" element={<Myprofile />} />
+            <Route path="adddetails" element={<AddDetails />} />
             <Route path="orders" element={<Orders />} />
           </Route>
           <Route path='/admin' element={<Admin />}>

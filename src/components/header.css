@@ -92,6 +92,9 @@ li a:hover {
     background: #7b7b7b;
     color: black;
 }
+li .cart:hover {
+    background: #ffffff;
+}
 .dropbtn {
     background-color: #c2c2c2;
 }

@@ -1,7 +1,7 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import cartContext from '../../context/CartContext';
-import { addDoc, collection } from 'firebase/firestore';
+import { addDoc, collection, getDocs } from 'firebase/firestore';
 import { db } from '../../firebase.config';
 import "./payment.css"
 
@@ -14,15 +14,23 @@ const Payment = () => {
   const [holdername, setHoldername] = useState("");
   const cartc = useContext(cartContext);
   const user = localStorage.getItem("user");
-  const userid = localStorage.getItem("userid");
-  const [loader, setloader] = useState(false)
-  const navigate = useNavigate();
+  const [address, setaddress] = useState([]);
 
   let productlist = cartc.cart;
   let total = 0;
   for (let i = 0; i < productlist.length; i++) {
     total += productlist[i].price;
   }
+
+  const getUserAddress = async () => {
+    const addressRef = collection(db, "users", user, "adresss");
+    const data = await getDocs(addressRef);
+    console.log(data);
+    setaddress(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
+    console.log(address);
+  }
+
+
 
   const cheackCard = () => {
     console.log(cardNo.length);
@@ -49,18 +57,19 @@ const Payment = () => {
   const buyItems = (pay_id) => {
     if (pay_id !== 0) {
       for (let i = 0; i < productlist.length; i++) {
-        addData(productlist[i].productid, productlist[i].name, pay_id);
+        addData(productlist[i].productid, productlist[i].name, productlist[i].img , pay_id );
       }
     } else {
       alert("Error");
     }
   }
 
-  const addData = async (id, name, pay_id) => {
+  const addData = async (id, name, img , pay_id) => {
     const docRef = await addDoc(collection(db, "orders"), {
       userid: user,
       product_id: id,
       product_name: name,
+      product_img: img,
       status: "pending",
       payment_id: pay_id
     })
@@ -69,10 +78,25 @@ const Payment = () => {
 
   }
 
-  // navigate("/invoice/" + pay_id);
+  useEffect(() => {
+    getUserAddress();
+  }, [])
 
 
-  return (
+
+  return (<div className="payment-page">
+    <div className="address-container">
+    {
+      address.map((e) => {
+        return (<div className='address'>
+          <h3>{e.house_no}</h3>
+          <h3>{e.Area} {e.Landmark}</h3> 
+          <h3>{e.pincode} {e.city}</h3>
+          <h3>{e.state}</h3>
+        </div>)
+      })
+    }
+    </div>
     <div className='payment'>
       <main id="main">
         <section id="left">
@@ -83,11 +107,12 @@ const Payment = () => {
           <h3>Only {total}</h3>
         </section>
         <section id="right">
-          <h1>Purchase</h1>
+          <h3></h3>
+          <h1>Purchase <span>Total: {total}</span></h1>
           <form onSubmit={payBill}>
             <div id="form-card" class="form-field">
               <label for="cc-number">Card number:</label>
-              <input id="cc-number" maxlength="19" placeholder="1111 2222 3333 4444" required onChange={(e) => setCardNo(e.target.value)}/>
+              <input id="cc-number" maxlength="19" placeholder="1111 2222 3333 4444" required onChange={(e) => setCardNo(e.target.value)} />
             </div>
 
             <div id="form-date" class="form-field">
@@ -116,7 +141,7 @@ const Payment = () => {
 
             <div id="form-sec-code" class="form-field">
               <label for="sec-code">Cvv code:</label>
-              <input type="password" maxlength="3" placeholder="123" required onChange={(e) => setCvv(e.target.value)}/>
+              <input type="password" maxlength="3" placeholder="123" required onChange={(e) => setCvv(e.target.value)} />
             </div>
 
             <button onClick={cheackCard} type="submit">Buy </button>
@@ -124,7 +149,7 @@ const Payment = () => {
         </section>
       </main>
       {/* <button onClick={payBill}>Pay</button> */}
-    </div>
+    </div></div>
   )
 }
 
