@@ -21,8 +21,7 @@ const ViewContact = () => {
         {
             contacts.map((e) => {
                 return(<div className='contact-details'>
-                <h1><b>Name : </b>{e.name}</h1>
-                <h5>Last Name :  {e.lastname}</h5>
+                <h1><b>Name : </b>{e.name} {e.lastname}</h1>
                 <h4>Messgae : {e.message}</h4>
                 <h5>State : {e.state}</h5>
                 <h5>City : {e.city}</h5>

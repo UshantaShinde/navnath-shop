@@ -23,7 +23,8 @@ const Login = () => {
                 localStorage.setItem("useremail",user.email);
                 console.log(user);
                 getUser(user.uid);
-                navigate('/');
+              
+                
             })
             .catch((error) => {
                 const errorCode = error.code;
@@ -39,6 +40,7 @@ const Login = () => {
         if (docSnap.exists()) {
           console.log("Document data:", docSnap.data());
             localStorage.setItem("userdetails",docSnap.data().name);
+            navigate('/');
         } else {
           console.log("No such document!");
         }

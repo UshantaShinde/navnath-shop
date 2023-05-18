@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { db } from '../../firebase.config';
-import { collection, onSnapshot, query, where } from 'firebase/firestore';
+import { collection, doc, onSnapshot, query, setDoc, where } from 'firebase/firestore';
 import "./orders.css"
 
 const Orders = () => {
@@ -21,6 +21,15 @@ const Orders = () => {
         return () => { unsub(); }
     }, [])
 
+    const CancelOrder = async (id) => {
+        if (window.confirm("Are You sure You want to cancel Order")) {
+            const OrderRef = doc(db, 'orders', id);
+            await setDoc(OrderRef, { status: "canceled" }, { merge: true });
+            alert("Status Updated");
+        } else {
+            window.location.reload();
+        }
+    }
 
     return (
         <div className='orders'>
@@ -33,7 +42,7 @@ const Orders = () => {
                         <div className="row">
                             <h1>{e.product_name}</h1>
                             <h2>{e.status}</h2>
-                            <button>Cancel</button>
+                            {(e.status !== "canceled")  && (e.status !== "Delevered") && <button onClick={() => CancelOrder(e.id)}>Cancel</button>}
                         </div>
                     </div>)
                 })

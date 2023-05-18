@@ -35,7 +35,7 @@ const AddProduct = () => {
     }
 
     return (
-        <div>
+        <div className='product-from'>
             <h1>Add Product</h1>
             <h5>name</h5>
             <input type="text" onChange={(e) => { setName(e.target.value) }} />

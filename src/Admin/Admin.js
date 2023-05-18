@@ -33,9 +33,11 @@ const Admin = () => {
         <div className="menu">
           <h2>Navnath Traders</h2>
           <div className="line"></div>
-          <li><a href="/"><NavLink to={"addproduct"}>Add Product</NavLink></a></li>
-          <li><a href="/"><NavLink to={"viewproducts"}>Product</NavLink></a></li>
-          <li><a href="/"><NavLink to={"viewcontact"}>Contacts</NavLink></a></li>
+          <li><NavLink to={"addproduct"}>Add Product</NavLink></li>
+          <li><NavLink to={"viewproducts"}>Product</NavLink></li>
+          <li><NavLink to={"viewcontact"}>Contacts</NavLink></li>
+          <li><NavLink to={"ordersReport"}>ordersReport</NavLink></li>
+          <li><NavLink to={"viewusers"}>View Customer</NavLink></li>
         </div>
         <div className="menu-space"></div>
         <div className="container">

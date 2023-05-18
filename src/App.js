@@ -20,6 +20,8 @@ import Myprofile from './pages/Myprofile/Myprofile';
 import Orders from './pages/Orders/Orders';
 import AddDetails from './pages/Myprofile/AddDetails';
 import AddAddress from './pages/Address/AddAddress';
+import OrdersReport from './Admin/OrdersReport';
+import ViewUsers from './Admin/ViewUsers';
 function App() {
 
 
@@ -49,6 +51,8 @@ function App() {
             <Route path='/admin/addproduct' element={<AddProduct />} />
             <Route path='/admin/viewproducts' element={<ViewProducts />} />
             <Route path='/admin/viewcontact' element={<ViewContact />} />
+            <Route path='/admin/ordersreport' element={<OrdersReport />} />
+            <Route path='/admin/viewusers' element={<ViewUsers />} />
 
           </Route>
         </Routes>
