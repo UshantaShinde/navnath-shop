@@ -16,7 +16,7 @@ const Header = () => {
 
     useEffect(() => {
         cartc.update();
-    }, [])
+    }, [cartc.cart.length])
 
     const logout = () => {
         localStorage.clear();

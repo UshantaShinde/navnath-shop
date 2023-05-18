@@ -9,7 +9,7 @@ import profilePic from "../../assets/profile.jpg"
 const Myprofile = () => {
   const user = localStorage.getItem("user");
   const [userDetails, setUserDetails] = useState("");
-  const [address, setaddress] = useState([]);
+  const [address, setaddress] = useState("");
   const navigate = useNavigate();
 
   const getUser = async () => {
@@ -25,11 +25,16 @@ const Myprofile = () => {
   }
 
   const getUserAddress = async () => {
-    const addressRef = collection(db, "users", user, "adresss");
-    const data = await getDocs(addressRef);
-    console.log(data);
-    setaddress(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
-    console.log(address);
+    const UserRef = collection(db, "users", user, "adresses");
+    const docRef = doc(UserRef, "address");
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+      console.log("Document data:", docSnap.data());
+      setaddress(docSnap.data());
+    } else {
+      console.log("No such document!");
+    }
   }
 
   useEffect(() => {
@@ -46,19 +51,15 @@ const Myprofile = () => {
           <span>Email</span>
           <h2>{userDetails.email}</h2>
           <span>Address</span>
-          {
-            address.map((e) => {
-              return (<div>
-                <div className="row">
-                  <h3>{e.houseno}</h3>
-                  <h3>{e.Area},{e.Landmark}</h3>
-                  <h3>{e.pincode},{e.city}</h3>
-                  <h3>{e.state}</h3>
-                </div>
+          <div>
+            <div className="row">
+              <h3>{address.houseno}</h3>
+              <h3>{address.area} {address.landmark}</h3>
+              <h3>{address.pincode} {address.city}</h3>
+              <h3>{address.state}</h3>
+            </div>
 
-              </div>)
-            })
-          }
+          </div>
           <button onClick={() => { navigate("/adddetails") }} >Edit</button>
         </div>
         <div className="row">

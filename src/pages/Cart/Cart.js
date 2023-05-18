@@ -39,25 +39,28 @@ const Cart = () => {
     }
 
     console.log(products)
-    return (
-        <div className='cart-list'>
-            {
-                products.map((v) => {
-                    return (<><div className='cart-item'>
-                        <img src={v.img} alt="" style={{ width: "200px" }} />
-                        <div className="flexbox">
-                            <Link to={"/productpage/" + v.productid}><h1>{v.name}</h1></Link>
-                            <p>Rs. {v.price}</p>
-                            <button onClick={(e) => removeitem(v)}>Remove</button></div>
-                    </div>
-                        <div className="line"></div></>
-                    )
-                })
-            }
-            <div className="total">
-                <h1>Total : Rs. {total}</h1>
-                <button><Link to={"/payment"}>Buy</Link></button></div>
-        </div>
+    return (<>{
+        (total <= 0) ? <h1>Empty</h1> : <>
+            <div className='cart-list'>
+                {
+                    products.map((v) => {
+                        return (<><div className='cart-item'>
+                            <img src={v.img} alt="" style={{ width: "200px" }} />
+                            <div className="flexbox">
+                                <Link to={"/productpage/" + v.productid}><h1>{v.name}</h1></Link>
+                                <p>Rs. {v.price}</p>
+                                <button onClick={(e) => removeitem(v)}>Remove</button></div>
+                        </div>
+                            <div className="line"></div></>
+                        )
+                    })
+                }
+                <div className="total">
+                    <h1>Total : Rs. {total}</h1>
+                    <button><Link to={"/addaddress"}>Buy</Link></button></div>
+            </div></>
+    }
+    </>
     )
 }
 

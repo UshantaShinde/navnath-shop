@@ -32,10 +32,10 @@ const Signup = () => {
 
 
     const addUser = async (id) => {
-        const docRef = await addDoc(collection(db, "users"), {
-            name: name,
-            email: email
-        });
+        // const docRef = await addDoc(collection(db, "users"), {
+        //     name: name,
+        //     email: email
+        // });
         const UserRef = collection(db, "users");
         await setDoc(doc(UserRef, id),{
             name: name,
