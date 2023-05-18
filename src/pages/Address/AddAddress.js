@@ -1,14 +1,10 @@
-import { collection, doc, getDoc, getDocs, setDoc } from 'firebase/firestore';
+import { collection, doc, getDoc, setDoc } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react'
 import { db } from '../../firebase.config';
-import "./myprofile.css"
+import "./addaddress.css"
 import { useNavigate } from 'react-router-dom';
 
-const AddDetails = () => {
-  const user = localStorage.getItem("user");
-  const [userDetails, setUserDetails] = useState("");
-  const [address, setaddress] = useState("");
-
+const AddAddress = () => {
   const [state, setState] = useState("");
   const [city, setCity] = useState("");
   const [area, setArea] = useState("");
@@ -17,19 +13,8 @@ const AddDetails = () => {
   const [houseno, setHouseno] = useState("");
   const [pincode, setPincode] = useState("");
 
+  const user = localStorage.getItem("user");
   const navigate = useNavigate();
-
-  const getUser = async () => {
-    const docRef = doc(db, "users", user);
-    const docSnap = await getDoc(docRef);
-
-    if (docSnap.exists()) {
-      console.log("Document data:", docSnap.data());
-      setUserDetails(docSnap.data());
-    } else {
-      console.log("No such document!");
-    }
-  }
 
   const getUserAddress = async () => {
     const UserRef = collection(db, "users", user, "adresses");
@@ -38,7 +23,6 @@ const AddDetails = () => {
 
     if (docSnap.exists()) {
       console.log("Document data:", docSnap.data());
-      setaddress(docSnap.data());
       setArea(docSnap.data().area);
       setCity(docSnap.data().city);
       setHouseno(docSnap.data().houseno);
@@ -51,8 +35,7 @@ const AddDetails = () => {
     }
   }
 
-
-  const updateAddress = async () => {
+  const addData = async () => {
     const UserRef = collection(db, "users", user, "adresses");
     await setDoc(doc(UserRef, "address"), {
       houseno: houseno,
@@ -63,19 +46,17 @@ const AddDetails = () => {
       state: state,
       phone: phone,
     });
-    alert("address Updated");
-    navigate(-1);
-
+    navigate("/payment")
   }
 
   useEffect(() => {
-    getUser();
     getUserAddress();
   }, [])
 
+
   return (
     <div className='address-form'>
-      <h1>Edit address</h1>
+      <h1>add address</h1>
       <span>House No</span>
       <input type="text" value={houseno} onChange={(e) => setHouseno(e.target.value)} />
       <span>Area</span>
@@ -90,10 +71,9 @@ const AddDetails = () => {
       <input type="text" value={state} onChange={(e) => setState(e.target.value)} />
       <span>phone no</span>
       <input type="number" value={phone} onChange={(e) => setPhone(e.target.value)} />
-      <button onClick={updateAddress}>Submit</button>
+      <button onClick={addData}>Submit</button>
     </div>
-
   )
 }
 
-export default AddDetails
+export default AddAddress

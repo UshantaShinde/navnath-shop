@@ -19,6 +19,7 @@ import Payment from './pages/Payment/Payment';
 import Myprofile from './pages/Myprofile/Myprofile';
 import Orders from './pages/Orders/Orders';
 import AddDetails from './pages/Myprofile/AddDetails';
+import AddAddress from './pages/Address/AddAddress';
 function App() {
 
 
@@ -40,6 +41,7 @@ function App() {
             <Route path="payment" element={<Payment />} />
             <Route path="profile" element={<Myprofile />} />
             <Route path="adddetails" element={<AddDetails />} />
+            <Route path="addaddress" element={<AddAddress />} />
             <Route path="orders" element={<Orders />} />
           </Route>
           <Route path='/admin' element={<Admin />}>
