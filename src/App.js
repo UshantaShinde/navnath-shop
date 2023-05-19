@@ -22,6 +22,8 @@ import AddDetails from './pages/Myprofile/AddDetails';
 import AddAddress from './pages/Address/AddAddress';
 import OrdersReport from './Admin/OrdersReport';
 import ViewUsers from './Admin/ViewUsers';
+import Report from './Admin/Report';
+import UpdateProduct from './Admin/UpdateProduct';
 function App() {
 
 
@@ -47,12 +49,14 @@ function App() {
             <Route path="orders" element={<Orders />} />
           </Route>
           <Route path='/admin' element={<Admin />}>
-            <Route index element={<AddProduct />} />
+            <Route index element={<Report />} />
             <Route path='/admin/addproduct' element={<AddProduct />} />
             <Route path='/admin/viewproducts' element={<ViewProducts />} />
+            <Route path='/admin/updateproduct/:id' element={<UpdateProduct />} />
             <Route path='/admin/viewcontact' element={<ViewContact />} />
             <Route path='/admin/ordersreport' element={<OrdersReport />} />
             <Route path='/admin/viewusers' element={<ViewUsers />} />
+            <Route path='/admin/report' element={<Report />} />
 
           </Route>
         </Routes>

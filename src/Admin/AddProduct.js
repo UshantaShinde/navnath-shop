@@ -31,7 +31,7 @@ const AddProduct = () => {
             cat_id: brand,
             img: img
         });
-        alert("Document written with ID: "+ docRef.id)
+        alert("Document written with ID: " + docRef.id)
     }
 
     return (
@@ -55,7 +55,7 @@ const AddProduct = () => {
                 }
             </select>
             <h5>img</h5>
-            <input type="text" onChange={(e) => { setImg(e.target.value) }} />
+            <input type="text" onChange={(e) => { setImg(e.target.value) }} /><br />
             <button onClick={addData}>Submit</button>
         </div>
     )
