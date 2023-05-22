@@ -24,6 +24,7 @@ import OrdersReport from './Admin/OrdersReport';
 import ViewUsers from './Admin/ViewUsers';
 import Report from './Admin/Report';
 import UpdateProduct from './Admin/UpdateProduct';
+import Bills from './Admin/Bills';
 function App() {
 
 
@@ -57,6 +58,7 @@ function App() {
             <Route path='/admin/ordersreport' element={<OrdersReport />} />
             <Route path='/admin/viewusers' element={<ViewUsers />} />
             <Route path='/admin/report' element={<Report />} />
+            <Route path='/admin/bills' element={<Bills />} />
 
           </Route>
         </Routes>

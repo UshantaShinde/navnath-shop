@@ -22,7 +22,7 @@ const ProductPage = () => {
       console.log("No such document!");
     }
   }
-  
+
   const addtocart = async () => {
     let prod = product;
     prod.productid = id;
@@ -38,16 +38,17 @@ const ProductPage = () => {
   }, [])
 
   return (
-    <div className='productdetails'>
-      <div className="col">
+    <div className="product-page">
+      <div className="container">
         <div className="row">
           <img src={product.img} alt="" />
+          <div className="circle"></div>
         </div>
         <div className="row">
+          <h5>{product.brand}</h5>
           <h1>{product.name}</h1>
-          <h2>₹: {product.price}</h2>
-          <p><b>Desciption : </b> {product.desc}</p>
-          <button onClick={addtocart}>Add to Cart</button>
+          <button onClick={addtocart}>Add To Cart</button>
+          <p>{product.desc}</p>
         </div>
       </div>
     </div>

@@ -14,9 +14,19 @@ const Payment = () => {
   const [holdername, setHoldername] = useState("");
   const cartc = useContext(cartContext);
   const user = localStorage.getItem("user");
+  const username = localStorage.getItem("userdetails");
   const [address, setaddress] = useState("");
 
   const navigate = useNavigate();
+
+  // Date object
+  const date = new Date();
+  let currentDay = String(date.getDate()).padStart(2, '0');
+  let currentMonth = String(date.getMonth() + 1).padStart(2, "0");
+  let currentYear = date.getFullYear();
+  let currentDate = `${currentDay}-${currentMonth}-${currentYear}`;
+
+
 
   let productlist = cartc.cart;
   let total = 0;
@@ -52,8 +62,10 @@ const Payment = () => {
     const docRef = await addDoc(collection(db, "payments"), {
       total: total,
       mode: "card",
+      date: currentDate,
       quantity: +productlist.length,
       customer_id: user,
+      customer_name: username,
     });
     alert("Document written with ID: " + docRef.id)
     // buyItems(data[0].id);
@@ -73,6 +85,7 @@ const Payment = () => {
   const addData = async (id, name, img, pay_id) => {
     const docRef = await addDoc(collection(db, "orders"), {
       userid: user,
+      username: username,
       product_id: id,
       product_name: name,
       product_img: img,

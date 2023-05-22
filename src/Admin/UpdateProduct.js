@@ -36,7 +36,7 @@ const UpdateProduct = () => {
             name: name,
             desc: desc,
             img: img,
-            price: price
+            price: +price
         }, { merge: true });
         alert("Status Upadated");
     }

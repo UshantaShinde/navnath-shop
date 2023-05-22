@@ -18,7 +18,7 @@ const Contact = () => {
 
     const submit = async () => {
         console.log(message, name, company, state, city, area, phone, email);
-        if (name !== "" && message !== "" && company !== "" && state !== "" && area !== "" && city !== "" && phone !== "" && email !== "") {
+        if (name !== "" && message !== "" && lname !== "" && state !== "" && area !== "" && city !== "" && phone !== "" && email !== "") {
             const docRef = await addDoc(collection(db, "contact"), {
                 name: name,
                 lastName : lname,

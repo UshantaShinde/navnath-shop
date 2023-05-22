@@ -228,6 +228,50 @@
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
+/* Bills */
+
+.bills-container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto auto;
+    padding: 30px 3%;
+    gap: 10px;
+}
+
+
+.bill-card {
+    width: 100%;
+    background-color: rgb(242, 242, 242);
+    display: flex;
+    flex-direction: column;
+    margin-left: 50px;
+    /* align-items: center; */
+    height: 500px;
+    padding: 50px 35px;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+.bill-card h2 {
+    color: black;
+}
+
+.bill-card h1 {
+    margin: 15px 0;
+}
+
+.bill-card h2 {
+    margin: 15px 0;
+}
+
+.bill-card h3 {
+    margin: 15px 0;
+}
+
+
+.bill-card h4 {
+    margin: 15px 0;
+}
+
+
 
 /* DashBoard */
 

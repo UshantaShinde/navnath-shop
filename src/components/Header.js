@@ -36,7 +36,7 @@ const Header = () => {
 
 
     return (
-        <div>
+        <div className="nav-comp">
             <nav>
                 <div className="logo">
                     <img src={logo} alt="" />

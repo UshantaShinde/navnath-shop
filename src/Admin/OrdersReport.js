@@ -35,8 +35,9 @@ const OrdersReport = () => {
                     orders.map((e) => {
                         return (<div className='orders-card'>
                             <h1>{e.product_name}</h1>
-                            <h5>{e.userid}</h5>
-                            <h5>{e.payment_id}</h5>
+                            <h3>{e.username}</h3>
+                            {/* <h5>{e.userid}</h5> */}
+                            <h5>Payment No. {e.payment_id}</h5>
                             <select name="Status" onChange={(e) => setStatus(e.target.value)}>
                                 <option value={e.status}>{e.status}</option>
                                 <option value="Delevered">Delevered</option>

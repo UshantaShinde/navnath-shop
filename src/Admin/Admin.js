@@ -39,6 +39,7 @@ const Admin = () => {
           <li><NavLink to={"viewcontact"}>Contacts</NavLink></li>
           <li><NavLink to={"ordersReport"}>ordersReport</NavLink></li>
           <li><NavLink to={"viewusers"}>Customer</NavLink></li>
+          <li><NavLink to={"bills"}>bills</NavLink></li>
         </div>
         <div className="menu-space"></div>
         <div className="admin-container">
