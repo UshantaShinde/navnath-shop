@@ -47,6 +47,7 @@ const ProductPage = () => {
         <div className="row">
           <h5>{product.brand}</h5>
           <h1>{product.name}</h1>
+          <h3>₹ {product.price}/-</h3>
           <button onClick={addtocart}>Add To Cart</button>
           <p>{product.desc}</p>
         </div>

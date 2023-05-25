@@ -31,38 +31,38 @@ function App() {
   return (
     <div className="App">
       <Cartstate>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<Home />} />
-            <Route path="products" element={<Products />} />
-            <Route path="productpage/:id" element={<ProductPage />} />
-            <Route path="about" element={<About />} />
-            <Route path="brand/:id" element={<Brand />} />
-            <Route path="signup" element={<Signup />} />
-            <Route path="login" element={<Login />} />
-            <Route path="cart" element={<Cart />} />
-            <Route path="contact" element={<Contact />} />
-            <Route path="payment" element={<Payment />} />
-            <Route path="profile" element={<Myprofile />} />
-            <Route path="adddetails" element={<AddDetails />} />
-            <Route path="addaddress" element={<AddAddress />} />
-            <Route path="orders" element={<Orders />} />
-          </Route>
-          <Route path='/admin' element={<Admin />}>
-            <Route index element={<Report />} />
-            <Route path='/admin/addproduct' element={<AddProduct />} />
-            <Route path='/admin/viewproducts' element={<ViewProducts />} />
-            <Route path='/admin/updateproduct/:id' element={<UpdateProduct />} />
-            <Route path='/admin/viewcontact' element={<ViewContact />} />
-            <Route path='/admin/ordersreport' element={<OrdersReport />} />
-            <Route path='/admin/viewusers' element={<ViewUsers />} />
-            <Route path='/admin/report' element={<Report />} />
-            <Route path='/admin/bills' element={<Bills />} />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Layout />}>
+              <Route index element={<Home />} />
+              <Route path="products" element={<Products />} />
+              <Route path="productpage/:id" element={<ProductPage />} />
+              <Route path="about" element={<About />} />
+              <Route path="brand/:id" element={<Brand />} />
+              <Route path="signup" element={<Signup />} />
+              <Route path="login" element={<Login />} />
+              <Route path="cart" element={<Cart />} />
+              <Route path="contact" element={<Contact />} />
+              <Route path="payment" element={<Payment />} />
+              <Route path="profile" element={<Myprofile />} />
+              <Route path="adddetails" element={<AddDetails />} />
+              <Route path="addaddress" element={<AddAddress />} />
+              <Route path="orders" element={<Orders />} />
+            </Route>
+            <Route path='/admin' element={<Admin />}>
+              <Route index element={<Report />} />
+              <Route path='/admin/addproduct' element={<AddProduct />} />
+              <Route path='/admin/viewproducts' element={<ViewProducts />} />
+              <Route path='/admin/updateproduct/:id' element={<UpdateProduct />} />
+              <Route path='/admin/viewcontact' element={<ViewContact />} />
+              <Route path='/admin/ordersreport' element={<OrdersReport />} />
+              <Route path='/admin/viewusers' element={<ViewUsers />} />
+              <Route path='/admin/report' element={<Report />} />
+              <Route path='/admin/bills' element={<Bills />} />
 
-          </Route>
-        </Routes>
-      </BrowserRouter>
+            </Route>
+          </Routes>
+        </BrowserRouter>
       </Cartstate>
 
     </div>
